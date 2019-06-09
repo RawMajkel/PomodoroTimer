@@ -1,8 +1,4 @@
-﻿using PomodoroTimer.Classes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace PomodoroTimer
@@ -17,7 +13,7 @@ namespace PomodoroTimer
         {
             using (var ctx = new MyContext())
             {
-                ctx.Database.Create();
+                ctx.Database.CreateIfNotExists();
             }
 
             Application.EnableVisualStyles();
