@@ -96,6 +96,10 @@
       <Project>{98d3be4c-acf5-4872-9578-a20b675185d7}</Project>
       <Name>Persistance</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{d7395fc1-4e88-47f3-b4a4-1129dcf36925}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

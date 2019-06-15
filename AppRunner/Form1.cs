@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Services;
 
 namespace AppRunner
 {
@@ -17,9 +11,19 @@ namespace AppRunner
             InitializeComponent();
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void loginButton_Click(object sender, EventArgs e)
         {
+            UserService userService = new UserService();
+            var loginResult = userService.TryLogin(loginTextBox.Text, passwordTextBox.Text);
 
+            if (!loginResult.IsValidated)
+            {
+                MessageBox.Show(loginResult.ErrorMessage);
+            }
+            else
+            {
+                MessageBox.Show("Zalogowano pomyślnie!");
+            }
         }
     }
 }
