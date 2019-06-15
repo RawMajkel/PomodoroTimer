@@ -1,3 +1,7 @@
 # PomodoroTimer
-Programowanie IV - Windows Forms Project
-Platform: .NET Framework 4.8
+
+## Projekt **Windows Forms** na przedmiot **Programowanie IV**
+
+Platforma: **.NET Framework 4.8**
+
+Baza danych hostowana na własnym VPS przy użyciu **Dockera**
