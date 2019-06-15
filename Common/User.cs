@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Common.PasswordHash;
 
 namespace Common
@@ -15,7 +16,11 @@ namespace Common
         public string NormalizedEmail { get; set; }
         public string PasswordHashed { get; set; }
         public byte[] HashBytes { get; set; }
-        public User(string userName, string email, string password)
+
+        [NotMapped]
+        public static User LoggedUser { get; set; }
+
+        public User(string userName, string password, string email)
         {
             UserName = userName;
             NormalizedUserName = userName.ToUpper();

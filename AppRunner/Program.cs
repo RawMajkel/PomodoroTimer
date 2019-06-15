@@ -1,4 +1,4 @@
-﻿using Common;
+﻿//using Common;
 using Persistance;
 using System;
 using System.Windows.Forms;
@@ -15,17 +15,18 @@ namespace AppRunner
         {
             using (var ctx = new Context())
             {
-                ctx.Database.Delete();
+                //ctx.Database.Delete();
                 ctx.Database.CreateIfNotExists();
 
-                var user = new User("mdrozdzik", "m.drozdzik97@gmail.com", "admin");
-                ctx.Users.Add(user);
-                ctx.SaveChanges();
+                //Dodaj dane testowe
+
+                //ctx.Users.Add(new User("mdrozdzik", "m.drozdzik97@gmail.com", "admin"));
+                //ctx.SaveChanges();
             }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new StartForm());
         }
     }
 }

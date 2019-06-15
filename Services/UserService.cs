@@ -1,51 +1,60 @@
 ﻿using System.Linq;
 using Persistance;
+using Common;
 using Common.PasswordHash;
 
 namespace Services
 {
     public class UserService
     {
-        private readonly Context _ctx = new Context();
-
-        public UserService()
+        public static ActionResult TryLogin(string userName, string password)
         {
-
-        }
-
-        public LoginResult TryLogin(string userName, string password)
-        {
-            using (_ctx)
+            using (var _ctx = new Context())
             {
-                var username = _ctx.Users.Where(x => x.UserName == userName).Select(x => x.UserName).FirstOrDefault();
-
-                if (string.IsNullOrEmpty(username))
+                if (!_ctx.Users.Any(x => x.UserName == userName))
                 {
-                    return new LoginResult(false, "Nie znaleziono tego użytkownika");
+                    return new ActionResult(false, $"Nie znaleziono użytkownika o nazwie '{userName}'");
                 }
 
-                var hashBytes = _ctx.Users.Where(x => x.UserName == username).Select(x => x.HashBytes).FirstOrDefault();
+                var hashBytes = _ctx.Users.Where(x => x.UserName == userName).Select(x => x.HashBytes).First();
                 HashPassword hash = new HashPassword(hashBytes);
 
                 if (!hash.Verify(password))
                 {
-                    return new LoginResult(false, "Hasło się nie zgadza");
+                    return new ActionResult(false, "Podane hasło jest błędne");
                 }
                 else
                 {
-                    return new LoginResult(true, "Pomyślnie zalogowano");
+                    User.LoggedUser = _ctx.Users.Where(x => x.UserName == userName).First();
+                    return new ActionResult(true, $"Pomyślnie zalogowano użytkownika '{userName}'");
                 }
             }
         }
-    }
-    public class LoginResult
-    {
-        public bool IsValidated { get; set; }
-        public string ErrorMessage { get; set; }
-        public LoginResult(bool isValidated, string errorMessage)
+
+        public static ActionResult TryRegister(string userName, string password, string email)
         {
-            IsValidated = isValidated;
-            ErrorMessage = errorMessage;
+            using (var _ctx = new Context())
+            {
+                if (string.IsNullOrEmpty(userName))
+                {
+                    return new ActionResult(false, "Wpisz nazwę użytkownika");
+                }
+
+                if (_ctx.Users.Any(x => x.UserName == userName))
+                {
+                    return new ActionResult(false, $"Użytkownik o nazwie '{userName}' już istnieje");
+                }
+
+                if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(email))
+                {
+                    return new ActionResult(false, "Wypełnij resztę wymaganych pól");
+                }
+
+                _ctx.Users.Add(new User(userName, password, email));
+                _ctx.SaveChanges();
+
+                return new ActionResult(true, $"Pomyślnie zarejestrowano użytkownika '{userName}'");
+            }
         }
     }
 }

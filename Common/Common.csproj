@@ -40,6 +40,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consts\Consts.cs" />
     <Compile Include="HashPassword\HashPassword.cs" />
     <Compile Include="Stats.cs" />
     <Compile Include="User.cs" />
