@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace PomodoroTimer.Classes
+namespace Common
 {
-    class Stats
+    public class Stats
     {
         [Key]
         public Guid StatsId { get; private set; } = Guid.NewGuid();

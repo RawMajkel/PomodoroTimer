@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Common;
+using Persistance;
+using System;
 using System.Windows.Forms;
 
-namespace PomodoroTimer
+namespace AppRunner
 {
     static class Program
     {
@@ -11,9 +13,14 @@ namespace PomodoroTimer
         [STAThread]
         static void Main()
         {
-            using (var ctx = new MyContext())
+            using (var ctx = new Context())
             {
+                ctx.Database.Delete();
                 ctx.Database.CreateIfNotExists();
+
+                var user = new User("mdrozdzik", "m.drozdzik97@gmail.com", "admin");
+                ctx.Users.Add(user);
+                ctx.SaveChanges();
             }
 
             Application.EnableVisualStyles();
