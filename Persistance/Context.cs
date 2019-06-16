@@ -11,5 +11,6 @@ namespace Persistance
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Stats> Statistics { get; set; }
+        public DbSet<LogHistory> __LoggingHistory { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Services;
 using Common.Consts;
+using Common;
 
 namespace AppRunner
 {
@@ -24,7 +25,10 @@ namespace AppRunner
 
             if (registerResult.IsValidated)
             {
-
+                ActiveForm.Text = $"{Consts.ProjectName} | {User.LoggedUser.UserName}";
+                Hide();
+                new WorkForm().ShowDialog();
+                Close();
             }
         }
     }

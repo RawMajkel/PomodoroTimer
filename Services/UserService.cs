@@ -7,6 +7,16 @@ namespace Services
 {
     public class UserService
     {
+        public static void Login(User user)
+        {
+            User.LoggedUser = user;
+
+            using (var _ctx = new Context())
+            {
+                _ctx.__LoggingHistory.Add(new LogHistory(User.LoggedUser.UserId));
+                _ctx.SaveChanges();
+            }
+        }
         public static ActionResult TryLogin(string userName, string password)
         {
             using (var _ctx = new Context())
@@ -25,7 +35,7 @@ namespace Services
                 }
                 else
                 {
-                    User.LoggedUser = _ctx.Users.Where(x => x.UserName == userName).First();
+                    Login(_ctx.Users.Where(x => x.UserName == userName).First());
                     return new ActionResult(true, $"Pomyślnie zalogowano użytkownika '{userName}'");
                 }
             }
@@ -53,6 +63,7 @@ namespace Services
                 _ctx.Users.Add(new User(userName, password, email));
                 _ctx.SaveChanges();
 
+                Login(_ctx.Users.Where(x => x.UserName == userName).First());
                 return new ActionResult(true, $"Pomyślnie zarejestrowano użytkownika '{userName}'");
             }
         }

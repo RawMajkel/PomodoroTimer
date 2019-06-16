@@ -24,7 +24,9 @@ namespace AppRunner
 
             if (loginResult.IsValidated)
             {
-                ActiveForm.Text = $"{Consts.ProjectName} | {User.LoggedUser.UserName}";
+                Hide();
+                new WorkForm().ShowDialog();
+                Close();
             }
         }
     }

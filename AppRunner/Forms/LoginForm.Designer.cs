@@ -172,6 +172,7 @@
             this.loginPasswordTextbox.Location = new System.Drawing.Point(340, 207);
             this.loginPasswordTextbox.Margin = new System.Windows.Forms.Padding(3, 58, 3, 3);
             this.loginPasswordTextbox.Name = "loginPasswordTextbox";
+            this.loginPasswordTextbox.PasswordChar = '*';
             this.loginPasswordTextbox.Size = new System.Drawing.Size(100, 33);
             this.loginPasswordTextbox.TabIndex = 13;
             // 
