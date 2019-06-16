@@ -7,6 +7,10 @@ namespace AppRunner
 {
     public partial class WorkForm : Form
     {
+        private Timer timer;
+        private int timeAmount;
+        TimeSpan timeSpan;
+
         public WorkForm()
         {
             InitializeComponent();
@@ -22,6 +26,46 @@ namespace AppRunner
             Hide();
             new WelcomeForm().ShowDialog();
             Close();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            timeAmount--;
+
+            if (timeAmount == 0)
+            {
+                timer.Stop();
+            }
+
+            timeSpan = TimeSpan.FromSeconds(timeAmount);
+            timerLabel.Text = string.Format("{0}:{1}", timeSpan.Minutes, timeSpan.Seconds);
+        }
+
+        private void WorkButton_Click(object sender, EventArgs e)
+        {
+            timeAmount = 25 * 60; //25 minutes
+            timer = new Timer();
+            timer.Tick += new EventHandler(Timer_Tick);
+            timer.Interval = 1000;
+            timer.Start();
+        }
+
+        private void ShortBreakButton_Click(object sender, EventArgs e)
+        {
+            timeAmount = 5 * 60; //5 minutes
+            timer = new Timer();
+            timer.Tick += new EventHandler(Timer_Tick);
+            timer.Interval = 1000;
+            timer.Start();
+        }
+
+        private void LongBreakButton_Click(object sender, EventArgs e)
+        {
+            timeAmount = 10 * 60; //10 minutes
+            timer = new Timer();
+            timer.Tick += new EventHandler(Timer_Tick);
+            timer.Interval = 1000;
+            timer.Start();
         }
     }
 }

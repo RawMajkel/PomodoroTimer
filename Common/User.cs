@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Common.PasswordHash;
 
@@ -7,7 +6,6 @@ namespace Common
 {
     public class User
     {
-        [Key]
         public Guid UserId { get; private set; } = Guid.NewGuid();
         public DateTime CreationDate { get; set; } = DateTime.Now;
         public string UserName { get; set; }

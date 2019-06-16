@@ -7,14 +7,35 @@ namespace Services
 {
     public class UserService
     {
-        public static void Login(User user)
+        private static void Login(User user)
         {
             User.LoggedUser = user;
 
             using (var _ctx = new Context())
             {
-                _ctx.__LoggingHistory.Add(new LogHistory(User.LoggedUser.UserId));
+                _ctx.LoggingHistory.Add(new LogHistory(User.LoggedUser.UserId));
                 _ctx.SaveChanges();
+            }
+        }
+        public static FoundUser CheckLastLoggedUser()
+        {
+            using (var _ctx = new Context())
+            {
+                if (_ctx.LoggingHistory.Select(x => x.UserId).Any())
+                {
+                    var lastLoggedUser = _ctx.LoggingHistory.Select(x => new LogHelper { UserId = x.UserId, LogDate = x.LogDate }).OrderByDescending(x => x.LogDate).First();
+
+                    //jeśli tak, sprwadź czy istnieje
+                    if (_ctx.Users.Any(x => x.UserId == lastLoggedUser.UserId))
+                    {
+                        //zaloguj
+                        var user = _ctx.Users.Where(x => x.UserId == lastLoggedUser.UserId).First();
+                        Login(user);
+                        return new FoundUser(true, $"Found user {user.UserName}", user);
+                    }
+                }
+
+                return new FoundUser(false, "No logged user found");
             }
         }
         public static ActionResult TryLogin(string userName, string password)

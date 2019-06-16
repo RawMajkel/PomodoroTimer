@@ -43,6 +43,7 @@
     <Compile Include="Consts\Consts.cs" />
     <Compile Include="HashPassword\HashPassword.cs" />
     <Compile Include="LogHistory.cs" />
+    <Compile Include="PomodoroSpan.cs" />
     <Compile Include="Stats.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>

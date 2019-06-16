@@ -1,9 +1,9 @@
-﻿using Common;
-using Persistance;
+﻿using Persistance;
 using System;
-using System.Linq;
 using System.Windows.Forms;
 using Services;
+using Common.Consts;
+using Common;
 
 namespace AppRunner
 {
@@ -23,28 +23,23 @@ namespace AppRunner
                 //_ctx.Database.Delete();
                 _ctx.Database.CreateIfNotExists();
 
-                //_ctx.Users.Add(new User("mdrozdzik", "m.drozdzik97@gmail.com", "admin"));
-                //_ctx.SaveChanges();
+                var user = new User("asd", "asd", "asd@asd.com");
 
-                //sprawdz czy istnieje ostatnio zalogowany user
-                if (_ctx.__LoggingHistory.Select(x => x.UserId).Any())
+                _ctx.Users.Add(user);
+                _ctx.UserStats.Add(new Stats(user, Consts.PomodoroWork));
+
+                _ctx.SaveChanges();
+
+                var response = UserService.CheckLastLoggedUser();
+
+                if (response.IsValidated)
                 {
-                    var lastLoggedUser = _ctx.__LoggingHistory.Select(x => new LogHelper { UserId = x.UserId, LogDate = x.LogDate }).OrderByDescending(x => x.LogDate).First();
-
-                    //jeśli tak, sprwadź czy istnieje
-                    if (_ctx.Users.Any(x => x.UserId == lastLoggedUser.UserId))
-                    {
-                        //zaloguj
-                        UserService.Login(_ctx.Users.Where(x => x.UserId == lastLoggedUser.UserId).First());
-                        Application.Run(new WorkForm());
-                        return;
-                    }
+                    Application.Run(new WorkForm());
                 }
                 else
                 {
                     Application.Run(new WelcomeForm());
                 }
-
             }
         }
     }
