@@ -2,6 +2,7 @@
 using Services;
 using System;
 using System.Windows.Forms;
+using System.Media;
 
 namespace AppRunner
 {
@@ -30,20 +31,19 @@ namespace AppRunner
             _timer.Start();
         }
 
-        private void TimerStop()
-        {
-            _timer.Stop();
-            Finished?.Invoke(this, EventArgs.Empty);
-            StatsService.SaveStat(User.LoggedUser, PomodoroSpan);
-        }
-
         public void Tick(object sender, EventArgs e)
         {
             _timeAmount--;
 
             if (_timeAmount == 0)
             {
-                TimerStop();
+                _timer.Stop();
+
+                var alarmSound = new SoundPlayer(Properties.Resources.alarm_sound);
+                alarmSound.Play();
+
+                Finished?.Invoke(this, EventArgs.Empty);
+                StatsService.SaveStat(User.LoggedUser, PomodoroSpan);
             }
 
             var timeSpan = TimeSpan.FromSeconds(_timeAmount);

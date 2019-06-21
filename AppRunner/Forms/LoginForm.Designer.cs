@@ -56,12 +56,13 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(976, 736);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 620);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // tableLayoutPanel3
@@ -72,14 +73,15 @@
             this.tableLayoutPanel3.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 113);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 95);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(970, 509);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 17F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(796, 430);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
             // loginButton
@@ -89,10 +91,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.loginButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.loginButton.Font = new System.Drawing.Font("Open Sans SemiBold", 9.857143F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.loginButton.Location = new System.Drawing.Point(300, 421);
-            this.loginButton.Margin = new System.Windows.Forms.Padding(300, 15, 300, 15);
+            this.loginButton.Location = new System.Drawing.Point(245, 356);
+            this.loginButton.Margin = new System.Windows.Forms.Padding(245, 12, 245, 12);
             this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(370, 73);
+            this.loginButton.Size = new System.Drawing.Size(306, 62);
             this.loginButton.TabIndex = 2;
             this.loginButton.Text = "Zaloguj";
             this.loginButton.UseVisualStyleBackColor = false;
@@ -103,9 +105,10 @@
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Open Sans", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Location = new System.Drawing.Point(2, 0);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(964, 101);
+            this.label3.Size = new System.Drawing.Size(792, 86);
             this.label3.TabIndex = 0;
             this.label3.Text = "Wypełnij poniższe pola aby się zalogować";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -120,13 +123,14 @@
             this.tableLayoutPanel4.Controls.Add(this.label5, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.loginPasswordTextbox, 1, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 104);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 88);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(964, 299);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 17F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(792, 254);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // label4
@@ -134,9 +138,10 @@
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Open Sans SemiBold", 8.142858F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(3, 0);
+            this.label4.Location = new System.Drawing.Point(2, 0);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(331, 149);
+            this.label4.Size = new System.Drawing.Size(273, 127);
             this.label4.TabIndex = 10;
             this.label4.Text = "Twój login";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -146,10 +151,10 @@
             this.loginUserNameTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.loginUserNameTextbox.Font = new System.Drawing.Font("Open Sans", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.loginUserNameTextbox.Location = new System.Drawing.Point(340, 58);
-            this.loginUserNameTextbox.Margin = new System.Windows.Forms.Padding(3, 58, 3, 3);
+            this.loginUserNameTextbox.Location = new System.Drawing.Point(279, 48);
+            this.loginUserNameTextbox.Margin = new System.Windows.Forms.Padding(2, 48, 2, 2);
             this.loginUserNameTextbox.Name = "loginUserNameTextbox";
-            this.loginUserNameTextbox.Size = new System.Drawing.Size(100, 33);
+            this.loginUserNameTextbox.Size = new System.Drawing.Size(270, 30);
             this.loginUserNameTextbox.TabIndex = 11;
             // 
             // label5
@@ -157,9 +162,10 @@
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Open Sans SemiBold", 8.142858F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(3, 149);
+            this.label5.Location = new System.Drawing.Point(2, 127);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(331, 150);
+            this.label5.Size = new System.Drawing.Size(273, 127);
             this.label5.TabIndex = 12;
             this.label5.Text = "Twoje hasło";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -169,11 +175,11 @@
             this.loginPasswordTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.loginPasswordTextbox.Font = new System.Drawing.Font("Open Sans", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginPasswordTextbox.Location = new System.Drawing.Point(340, 207);
-            this.loginPasswordTextbox.Margin = new System.Windows.Forms.Padding(3, 58, 3, 3);
+            this.loginPasswordTextbox.Location = new System.Drawing.Point(279, 175);
+            this.loginPasswordTextbox.Margin = new System.Windows.Forms.Padding(2, 48, 2, 2);
             this.loginPasswordTextbox.Name = "loginPasswordTextbox";
             this.loginPasswordTextbox.PasswordChar = '*';
-            this.loginPasswordTextbox.Size = new System.Drawing.Size(100, 33);
+            this.loginPasswordTextbox.Size = new System.Drawing.Size(270, 30);
             this.loginPasswordTextbox.TabIndex = 13;
             // 
             // label1
@@ -182,9 +188,10 @@
             this.label1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Open Sans SemiBold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(2, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(970, 110);
+            this.label1.Size = new System.Drawing.Size(796, 93);
             this.label1.TabIndex = 0;
             this.label1.Text = "Pomodoro Timer";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -197,12 +204,13 @@
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.linkLabel1, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 628);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 529);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(970, 105);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(796, 89);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // label2
@@ -212,9 +220,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Open Sans", 8.142858F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Location = new System.Drawing.Point(2, 0);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(964, 52);
+            this.label2.Size = new System.Drawing.Size(792, 44);
             this.label2.TabIndex = 2;
             this.label2.Text = "© 2019 | Michał Droździk";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -223,9 +232,10 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linkLabel1.Location = new System.Drawing.Point(3, 52);
+            this.linkLabel1.Location = new System.Drawing.Point(2, 44);
+            this.linkLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(964, 53);
+            this.linkLabel1.Size = new System.Drawing.Size(792, 45);
             this.linkLabel1.TabIndex = 3;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "https://github.com/RawMajkel/PomodoroTimer";
@@ -233,11 +243,12 @@
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(976, 736);
+            this.ClientSize = new System.Drawing.Size(800, 620);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.MinimumSize = new System.Drawing.Size(1000, 800);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(822, 676);
             this.Name = "LoginForm";
             this.Text = "LoginForm";
             this.tableLayoutPanel1.ResumeLayout(false);

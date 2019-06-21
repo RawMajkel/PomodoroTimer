@@ -9,15 +9,16 @@ namespace AppRunner
 {
     public partial class WorkForm : Form
     {
-        public static List<Button> controlButtons;
-        public static Color buttonsColor;
+        public static List<Button> ControlButtons { get; set; }
+        public static Color ButtonsColor { get; set; }
+
         public WorkForm()
         {
             InitializeComponent();
 
-            buttonsColor = workButton.BackColor;
+            ButtonsColor = workButton.BackColor;
 
-            controlButtons = new List<Button>()
+            ControlButtons = new List<Button>()
             {
                 workButton,
                 shortBreakButton,
@@ -25,12 +26,26 @@ namespace AppRunner
             };
         }
 
-        public void ChangeButtonsState(object sender = null, EventArgs e = null)
+        private void ConfigureTimer(TimerHelper timer)
         {
-            for (int i = 0; i < controlButtons.Count; i++)
+            timer.TimerStart();
+            timer.Finished += TimerFinished;
+        }
+
+        public void TimerFinished(object sender = null, EventArgs e = null)
+        {
+            ChangeButtonsState();
+            CenterToScreen();
+            Activate();
+            Focus();
+        }
+
+        public void ChangeButtonsState()
+        {
+            for (int i = 0; i < ControlButtons.Count; i++)
             {
-                controlButtons[i].Enabled = !controlButtons[i].Enabled;
-                controlButtons[i].BackColor = (!controlButtons[i].Enabled) ? ColorTranslator.FromHtml("#666") : buttonsColor;
+                ControlButtons[i].Enabled = !ControlButtons[i].Enabled;
+                ControlButtons[i].BackColor = (!ControlButtons[i].Enabled) ? ColorTranslator.FromHtml("#666") : ButtonsColor;
             }
         }
 
@@ -41,29 +56,19 @@ namespace AppRunner
 
         private void WorkButton_Click(object sender, EventArgs e)
         {
-            var timer = new TimerHelper(Consts.PomodoroWork, timerLabel);
-            timer.TimerStart();
-            timer.Finished += ChangeButtonsState;
-
+            ConfigureTimer(new TimerHelper(Consts.PomodoroWork, timerLabel, 10));
             ChangeButtonsState();
         }
 
         private void ShortBreakButton_Click(object sender, EventArgs e)
         {
-            var timer = new TimerHelper(Consts.PomodoroShortBreak, timerLabel, 50);
-            timer.TimerStart();
-            timer.Finished += ChangeButtonsState;
-
+            ConfigureTimer(new TimerHelper(Consts.PomodoroShortBreak, timerLabel, 10));
             ChangeButtonsState();
         }
 
-
         private void LongBreakButton_Click(object sender, EventArgs e)
         {
-            var timer = new TimerHelper(Consts.PomodoroLongBreak, timerLabel);
-            timer.TimerStart();
-            timer.Finished += ChangeButtonsState;
-
+            ConfigureTimer(new TimerHelper(Consts.PomodoroLongBreak, timerLabel, 10));
             ChangeButtonsState();
         }
 
@@ -72,6 +77,12 @@ namespace AppRunner
             Hide();
             new WelcomeForm().ShowDialog();
             Close();
+        }
+
+        private void ShowStats_Click(object sender, EventArgs e)
+        {
+            var statsForm = new UserStatsForm();
+            statsForm.ShowDialog();
         }
     }
 }

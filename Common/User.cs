@@ -28,6 +28,17 @@ namespace Common
             PasswordHashed = Convert.ToBase64String(HashBytes);
         }
 
+        public User(string userName, string password, string email, DateTime creationDate)
+        {
+            UserName = userName;
+            NormalizedUserName = userName.ToUpper();
+            Email = email;
+            NormalizedEmail = email.ToUpper();
+            HashBytes = new HashPassword(password).ToArray();
+            PasswordHashed = Convert.ToBase64String(HashBytes);
+            CreationDate = creationDate;
+        }
+
         private User()
         {
 

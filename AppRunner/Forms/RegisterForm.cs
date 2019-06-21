@@ -15,7 +15,6 @@ namespace AppRunner
 
         private void RegisterButton_Click(object sender, EventArgs e)
         {
-
             //Rejestracja
             var registerResult = UserService.TryRegister(registerUserNameTextbox.Text, registerPasswordTextbox.Text, registerEmailTextbox.Text);
 
