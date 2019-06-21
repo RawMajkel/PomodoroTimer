@@ -26,7 +26,7 @@ namespace AppRunner
                 var user = new User("asd", "asd", "asd@asd.com");
 
                 _ctx.Users.Add(user);
-                _ctx.UserStats.Add(new Stats(user, Consts.PomodoroWork));
+                _ctx.UserStats.Add(new Stats(user.UserId, Consts.PomodoroWork));
 
                 _ctx.SaveChanges();
 

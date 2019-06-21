@@ -1,19 +1,37 @@
 ﻿using Common;
 using Common.Consts;
 using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace AppRunner
 {
     public partial class WorkForm : Form
     {
-        private Timer timer;
-        private int timeAmount;
-        TimeSpan timeSpan;
-
+        public static List<Button> controlButtons;
+        public static Color buttonsColor;
         public WorkForm()
         {
             InitializeComponent();
+
+            buttonsColor = workButton.BackColor;
+
+            controlButtons = new List<Button>()
+            {
+                workButton,
+                shortBreakButton,
+                longBreakButton
+            };
+        }
+
+        public void ChangeButtonsState(object sender = null, EventArgs e = null)
+        {
+            for (int i = 0; i < controlButtons.Count; i++)
+            {
+                controlButtons[i].Enabled = !controlButtons[i].Enabled;
+                controlButtons[i].BackColor = (!controlButtons[i].Enabled) ? ColorTranslator.FromHtml("#666") : buttonsColor;
+            }
         }
 
         private void WorkForm_Load(object sender, EventArgs e)
@@ -21,51 +39,39 @@ namespace AppRunner
             Text = $"{Consts.ProjectName} | {User.LoggedUser.UserName}";
         }
 
-        private void ZmieńUżytkownikaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Hide();
-            new WelcomeForm().ShowDialog();
-            Close();
-        }
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            timeAmount--;
-
-            if (timeAmount == 0)
-            {
-                timer.Stop();
-            }
-
-            timeSpan = TimeSpan.FromSeconds(timeAmount);
-            timerLabel.Text = string.Format("{0}:{1}", timeSpan.Minutes, timeSpan.Seconds);
-        }
-
         private void WorkButton_Click(object sender, EventArgs e)
         {
-            timeAmount = 25 * 60; //25 minutes
-            timer = new Timer();
-            timer.Tick += new EventHandler(Timer_Tick);
-            timer.Interval = 1000;
-            timer.Start();
+            var timer = new TimerHelper(Consts.PomodoroWork, timerLabel);
+            timer.TimerStart();
+            timer.Finished += ChangeButtonsState;
+
+            ChangeButtonsState();
         }
 
         private void ShortBreakButton_Click(object sender, EventArgs e)
         {
-            timeAmount = 5 * 60; //5 minutes
-            timer = new Timer();
-            timer.Tick += new EventHandler(Timer_Tick);
-            timer.Interval = 1000;
-            timer.Start();
+            var timer = new TimerHelper(Consts.PomodoroShortBreak, timerLabel, 50);
+            timer.TimerStart();
+            timer.Finished += ChangeButtonsState;
+
+            ChangeButtonsState();
         }
+
 
         private void LongBreakButton_Click(object sender, EventArgs e)
         {
-            timeAmount = 10 * 60; //10 minutes
-            timer = new Timer();
-            timer.Tick += new EventHandler(Timer_Tick);
-            timer.Interval = 1000;
-            timer.Start();
+            var timer = new TimerHelper(Consts.PomodoroLongBreak, timerLabel);
+            timer.TimerStart();
+            timer.Finished += ChangeButtonsState;
+
+            ChangeButtonsState();
+        }
+
+        private void ChangeUser_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new WelcomeForm().ShowDialog();
+            Close();
         }
     }
 }

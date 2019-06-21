@@ -6,18 +6,20 @@ namespace Common
     {
         public Guid StatsId { get; private set; } = Guid.NewGuid();
         public DateTime Date { get; set; } = DateTime.Now;
-        public User User { get; set; }
-        public PomodoroSpan PomodoroType { get; set; }
+        public Guid UserID { get; set; }
+        public string PomodoroName { get; set; }
+        public int PomodoroTime { get; set; }
 
         private Stats()
         {
 
         }
 
-        public Stats(User user, PomodoroSpan pomodoroType)
+        public Stats(Guid userId, PomodoroSpan pomodoroType)
         {
-            User = user;
-            PomodoroType = pomodoroType;
+            UserID = userId;
+            PomodoroName = pomodoroType.PomodoroName;
+            PomodoroTime = pomodoroType.PomodoroTime;
         }
     }
 }

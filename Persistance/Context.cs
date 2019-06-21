@@ -14,6 +14,5 @@ namespace Persistance
         public DbSet<User> Users { get; set; }
         public DbSet<LogHistory> LoggingHistory { get; set; }
         public DbSet<Stats> UserStats { get; set; }
-        public DbSet<PomodoroSpan> PomodoroSpans { get; set; }
     }
 }
